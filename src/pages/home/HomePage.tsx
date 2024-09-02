@@ -1,3 +1,12 @@
+import { HeroSection } from './HeroSection';
+
 export function HomePage() {
-  return <div>home</div>;
+  return (
+    <section>
+      <HeroSection />
+      <StepsSections />
+    </section>
+  );
 }
+
+const StepsSections = () => <div />;
