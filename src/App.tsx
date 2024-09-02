@@ -1,3 +1,3 @@
 export default function App() {
-  return <div>Lucky pick app</div>;
+  return <div className="sda">Lucky pick app</div>;
 }
