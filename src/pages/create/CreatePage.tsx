@@ -12,7 +12,7 @@ export function CreatePage() {
   }
 
   return (
-    <section className="mx-auto max-w-screen-xl">
+    <section className="max-w-desktop mx-auto">
       <header>
         <Text variant={'title'}>Create a new raffle</Text>
       </header>

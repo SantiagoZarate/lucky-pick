@@ -1,3 +1,4 @@
+@import url('./fonts.css');
 @import url('./colors.css');
 
 @tailwind base;
@@ -10,6 +11,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply font-geist bg-background text-foreground;
   }
 }

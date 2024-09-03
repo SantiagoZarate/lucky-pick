@@ -5,7 +5,7 @@ export function HeroSection() {
   return (
     <div className="relative">
       <div className="absolute inset-0 bg-secondary [mask-image:radial-gradient(ellipse_100%_100%_at_25%_100%,white_0%,transparent_100%)]" />
-      <section className="relative mx-auto flex min-h-[70dvh] max-w-screen-xl items-center">
+      <section className="max-w-desktop relative mx-auto flex min-h-[70dvh] items-center">
         <article className="flex flex-1 flex-col gap-4">
           <h1 className="text-4xl font-semibold">
             Create, Participate, and Win – The Ultimate Raffle Experience!
