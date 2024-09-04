@@ -1,4 +1,5 @@
 import { List, Text } from '@/components/ui';
+import { Cell } from '@/components/ui/cell';
 import { RaffleFormSchema } from '@/lib/zod-validation/raffleSchema';
 import { PropsWithChildren } from 'react';
 import { useFormContext } from 'react-hook-form';
@@ -19,14 +20,7 @@ export function DetailsStep({ children }: PropsWithChildren) {
           {Array(Number(getValues('amount_tickets')))
             .fill(1)
             .map((_, index) => (
-              <li
-                className="group grid aspect-square place-content-center rounded-sm border hover:bg-input"
-                key={index}
-              >
-                <p className="pointer-events-none text-xs opacity-0 transition group-hover:opacity-100">
-                  {index + 1}
-                </p>
-              </li>
+              <Cell key={index} number={index + 1} />
             ))}
         </ul>
       </article>
