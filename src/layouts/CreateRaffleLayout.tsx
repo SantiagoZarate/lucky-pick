@@ -7,7 +7,7 @@ interface Props extends PropsWithChildren {
 
 export function CreateRaffleLayout({ children, steps }: Props) {
   return (
-    <section className="mx-auto max-w-desktop">
+    <section className="mx-auto flex max-w-desktop flex-col gap-8">
       <header>
         <Text variant={'title'}>Create a new raffle</Text>
       </header>

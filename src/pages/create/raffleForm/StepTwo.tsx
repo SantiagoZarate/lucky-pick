@@ -1,3 +1,4 @@
+import { DolarMiniIcon, TicketMicroIcon } from '@/components/icons';
 import {
   Button,
   FormControl,
@@ -21,7 +22,9 @@ export function StepTwo() {
         name="amount_tickets"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Amount of tickets</FormLabel>
+            <FormLabel className="flex items-center gap-2">
+              <TicketMicroIcon /> Amount of tickets
+            </FormLabel>
             <FormControl>
               <Input placeholder="100" {...field} type="number" />
             </FormControl>
@@ -37,7 +40,9 @@ export function StepTwo() {
         name="price_per_ticket"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Price per ticket</FormLabel>
+            <FormLabel className="flex items-center gap-2">
+              <DolarMiniIcon /> Price per ticket
+            </FormLabel>
             <FormControl>
               <Input placeholder="$2.99" {...field} type="number" />
             </FormControl>

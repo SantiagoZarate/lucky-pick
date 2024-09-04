@@ -1,14 +1,16 @@
-import { Button } from '@/components/ui/button';
+import { TableCellsMicro } from '@/components/icons';
 import {
+  Button,
   FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+  Input,
+} from '@/components/ui';
 import { RaffleFormSchema } from '@/lib/zod-validation/raffleSchema';
+import { getEmoji } from '@/utils/getEmoji';
 import { useFormContext } from 'react-hook-form';
 
 export function StepOne({ onIncreaseStep }: { onIncreaseStep: () => void }) {
@@ -26,7 +28,9 @@ export function StepOne({ onIncreaseStep }: { onIncreaseStep: () => void }) {
         name="title"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Raffle title</FormLabel>
+            <FormLabel className="flex items-center gap-2">
+              <TableCellsMicro /> Raffle title
+            </FormLabel>
             <FormControl>
               <Input placeholder="the greatest raffle ever made" {...field} />
             </FormControl>
@@ -49,7 +53,9 @@ export function StepOne({ onIncreaseStep }: { onIncreaseStep: () => void }) {
           name={`prizes.${index}`}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Prize {index + 1}</FormLabel>
+              <FormLabel>
+                {getEmoji(index)} Prize {index + 1}
+              </FormLabel>
               <FormControl>
                 <Input {...field} placeholder="prize" />
               </FormControl>
