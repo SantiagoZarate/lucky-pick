@@ -1,10 +1,13 @@
+import { Loader } from '@/components/ui';
 import {
   RaffleFormSchema,
   defaultValues,
   raffleFormSchema,
 } from '@/lib/zod-validation/raffleSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { RaffleLink } from '../RaffleLink';
 import { DetailsStep } from './DetailsStep';
 import { StepOne } from './StepOne';
 import { StepTwo } from './StepTwo';
@@ -15,13 +18,21 @@ interface Props {
 }
 
 export function RaffleForm({ step, onIncreaseStep }: Props) {
+  const [url, setUrl] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const form = useForm<RaffleFormSchema>({
     resolver: zodResolver(raffleFormSchema),
     defaultValues,
   });
 
-  const handleSubmit = (data: RaffleFormSchema) => {
+  const handleSubmit = async (data: RaffleFormSchema) => {
     console.log(data);
+    setIsLoading(true);
+    setTimeout(() => {
+      setUrl('81wgd1s8dg');
+      setIsLoading(false);
+    }, 2000);
+
     onIncreaseStep();
   };
 
@@ -37,7 +48,9 @@ export function RaffleForm({ step, onIncreaseStep }: Props) {
   return (
     <FormProvider {...form}>
       {step === 3 ? (
-        <DetailsStep />
+        <DetailsStep>
+          {isLoading ? <Loader /> : <RaffleLink url={url} />}
+        </DetailsStep>
       ) : (
         <form
           onSubmit={form.handleSubmit(handleSubmit)}

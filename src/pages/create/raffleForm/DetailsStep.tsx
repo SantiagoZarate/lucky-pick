@@ -1,8 +1,9 @@
 import { List, Text } from '@/components/ui';
 import { RaffleFormSchema } from '@/lib/zod-validation/raffleSchema';
+import { PropsWithChildren } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-export function DetailsStep() {
+export function DetailsStep({ children }: PropsWithChildren) {
   const { getValues } = useFormContext<RaffleFormSchema>();
 
   const estimated = new Intl.NumberFormat('en-US', {
@@ -19,7 +20,7 @@ export function DetailsStep() {
             .fill(1)
             .map((_, index) => (
               <li
-                className="group grid aspect-square place-content-center border hover:bg-input"
+                className="group grid aspect-square place-content-center rounded-sm border hover:bg-input"
                 key={index}
               >
                 <p className="pointer-events-none text-xs opacity-0 transition group-hover:opacity-100">
@@ -64,6 +65,9 @@ export function DetailsStep() {
             <span className="text-green-600">{estimated}</span>
           </Text>
         </section>
+      </article>
+      <article className="group relative col-span-2 flex flex-col gap-6 rounded-xl bg-secondary p-4">
+        {children}
       </article>
     </section>
   );
