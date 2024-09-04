@@ -5,6 +5,7 @@ import {
 } from '@/lib/zod-validation/raffleSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, useForm } from 'react-hook-form';
+import { DetailsStep } from './DetailsStep';
 import { StepOne } from './StepOne';
 import { StepTwo } from './StepTwo';
 
@@ -33,22 +34,22 @@ export function RaffleForm({ step, onIncreaseStep }: Props) {
     onIncreaseStep();
   };
 
-  if (step === 3) {
-    return <div>Your link</div>;
-  }
-
   return (
     <FormProvider {...form}>
-      <form
-        onSubmit={form.handleSubmit(handleSubmit)}
-        className="flex flex-col gap-4"
-      >
-        {step === 1 ? (
-          <StepOne onIncreaseStep={handleIncreaseStep} />
-        ) : (
-          <StepTwo />
-        )}
-      </form>
+      {step === 3 ? (
+        <DetailsStep />
+      ) : (
+        <form
+          onSubmit={form.handleSubmit(handleSubmit)}
+          className="flex flex-col gap-4"
+        >
+          {step === 1 ? (
+            <StepOne onIncreaseStep={handleIncreaseStep} />
+          ) : (
+            <StepTwo />
+          )}
+        </form>
+      )}
     </FormProvider>
   );
 }

@@ -12,9 +12,10 @@ export function CreatePage() {
   }
 
   return (
-    <CreateRaffleLayout steps={<Steps currentStep={currentStep} />}>
+    <CreateRaffleLayout>
       <RaffleForm step={currentStep} onIncreaseStep={increaseStep} />
-      {currentStep === 3 && <ConfettiExplosion />}
+      <Steps currentStep={currentStep} />
+      {currentStep === 3 && <ConfettiExplosion className="absolute" />}
     </CreateRaffleLayout>
   );
 }
