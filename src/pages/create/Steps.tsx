@@ -1,5 +1,5 @@
 import { List, Text } from '@/components/ui';
-import { StepItem } from './StepItem';
+import { StepItem, Variants } from './StepItem';
 
 interface Props {
   currentStep: number;
@@ -18,15 +18,23 @@ export function Steps({ currentStep }: Props) {
         <h4>Steps to create a new raffle</h4>
       </Text>
       <List>
-        {STEPS.map((step, index) => (
-          <StepItem
-            active={index + 1 === currentStep}
-            stepNumber={index + 1}
-            key={step}
-          >
-            {step}
-          </StepItem>
-        ))}
+        {STEPS.map((step, index) => {
+          let variant: Variants['variant'] = 'regular';
+
+          const aux = index + 1;
+
+          if (currentStep === aux) {
+            variant = 'active';
+          } else if (currentStep < aux) {
+            variant = 'inactive';
+          }
+
+          return (
+            <StepItem variant={variant} stepNumber={aux} key={step}>
+              {step}
+            </StepItem>
+          );
+        })}
       </List>
     </aside>
   );
