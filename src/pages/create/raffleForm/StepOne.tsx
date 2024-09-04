@@ -28,7 +28,7 @@ export function StepOne({ onIncreaseStep }: { onIncreaseStep: () => void }) {
           <FormItem>
             <FormLabel>Raffle title</FormLabel>
             <FormControl>
-              <Input {...field} />
+              <Input placeholder="the greatest raffle ever made" {...field} />
             </FormControl>
             <FormDescription>Give it a new name</FormDescription>
             <FormMessage />

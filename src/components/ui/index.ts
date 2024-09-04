@@ -3,3 +3,4 @@ export * from './button';
 export * from './text';
 export * from './label';
 export * from './form';
+export * from './input';

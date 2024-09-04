@@ -1,12 +1,12 @@
+import {
+  RaffleFormSchema,
+  defaultValues,
+  raffleFormSchema,
+} from '@/lib/zod-validation/raffleSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, useForm } from 'react-hook-form';
 import { StepOne } from './StepOne';
 import { StepTwo } from './StepTwo';
-import {
-  RaffleFormSchema,
-  raffleFormSchema,
-  defaultValues,
-} from '@/lib/zod-validation/raffleSchema';
 
 interface Props {
   step: number;
@@ -24,16 +24,31 @@ export function RaffleForm({ step, onIncreaseStep }: Props) {
     onIncreaseStep();
   };
 
-  return step !== 3 ? (
+  const handleIncreaseStep = () => {
+    const value = form.getValues('title');
+    if (!value) {
+      form.setError('title', { message: 'Title must be defined' });
+      return;
+    }
+    onIncreaseStep();
+  };
+
+  if (step === 3) {
+    return <div>Your link</div>;
+  }
+
+  return (
     <FormProvider {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
         className="flex flex-col gap-4"
       >
-        {step === 1 ? <StepOne onIncreaseStep={onIncreaseStep} /> : <StepTwo />}
+        {step === 1 ? (
+          <StepOne onIncreaseStep={handleIncreaseStep} />
+        ) : (
+          <StepTwo />
+        )}
       </form>
     </FormProvider>
-  ) : (
-    <div>Your link</div>
   );
 }
