@@ -11,6 +11,7 @@ import { NotificationsList } from './NotificationsList';
 export type Notification = {
   name: string;
   action: 'buy' | 'cancel';
+  id: number;
 };
 
 export function RightSide() {
@@ -30,24 +31,23 @@ export function RightSide() {
     );
   };
 
-  const updateNotifications = (action: Notification['action']) => {
+  const addNotification = (action: Notification['action']) => {
     setNotifications((prevState) => {
-      const newArray: Notification[] = [
+      return [
         {
           action,
           name: getRandomName(),
+          id: prevState.length + 1,
         },
         ...prevState,
       ];
-
-      return newArray.slice(0, 3);
     });
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
       const { id, state } = cells[Math.floor(Math.random() * cells.length)];
-      updateNotifications(state === 'active' ? 'cancel' : 'buy');
+      addNotification(state === 'active' ? 'cancel' : 'buy');
       toggleCellState(id);
     }, 2000);
 
@@ -55,20 +55,20 @@ export function RightSide() {
   }, [cells]);
 
   return (
-    <article className="flex flex-1 flex-col gap-2">
+    <article className="flex flex-1 flex-col gap-4">
       <CellsGrid>
-        {cells.map(({ id, state }, index) => (
+        {cells.map(({ id, state }) => (
           <Cell
             className="cursor-pointer transition-all active:scale-75"
             onClick={() => toggleCellState(id)}
             variant={state}
             key={id}
-            number={index + 1}
+            number={id}
           />
         ))}
       </CellsGrid>
-      <footer className="flex items-start justify-between">
-        <NotificationsList notifications={notifications} />
+      <footer className="relative flex items-start justify-between">
+        <NotificationsList notifications={notifications.slice(0, 3)} />
         <CellStatusInfo />
       </footer>
       {cells.every((c) => c.state === 'active') && <ConfettiExplosion />}
