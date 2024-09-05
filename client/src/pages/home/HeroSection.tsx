@@ -1,8 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { CellsGrid } from './hero/CellsGrid';
-import './table-cells.css';
-import { Text } from '@/components/ui';
+import { RightSide } from './hero/RightSide';
 
 export function HeroSection() {
   return (
@@ -30,19 +28,7 @@ export function HeroSection() {
             </Link>
           </footer>
         </article>
-        <article className="flex flex-1 flex-col">
-          <CellsGrid />
-          <footer className="flex flex-col items-end">
-            <div className="flex items-center gap-1">
-              <Text variant={'detail'}>Purchased</Text>
-              <div className="size-2 rounded-full bg-green-500" />
-            </div>
-            <div className="flex items-center gap-1">
-              <Text variant={'detail'}>Available</Text>
-              <div className="size-2 rounded-full border bg-background" />
-            </div>
-          </footer>
-        </article>
+        <RightSide />
       </section>
     </div>
   );
