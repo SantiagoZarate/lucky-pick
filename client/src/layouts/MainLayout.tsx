@@ -1,4 +1,5 @@
 import { Header } from '@/components/common';
+import { Footer } from '@/components/common/footer/Footer';
 import { Outlet } from 'react-router-dom';
 
 export function MainLayout() {
@@ -7,7 +8,7 @@ export function MainLayout() {
       <Header />
       <section className="grid min-h-dvh grid-rows-[1fr_auto] pt-16">
         <Outlet />
-        <footer></footer>
+        <Footer />
       </section>
     </section>
   );

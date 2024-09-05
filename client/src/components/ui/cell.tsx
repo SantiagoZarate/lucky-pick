@@ -2,7 +2,7 @@ import { ComponentProps } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 
 const cellStyles = cva(
-  'group grid aspect-square place-content-center rounded-sm border',
+  'group grid aspect-square place-content-center rounded-sm border transition-colors duration-300',
   {
     variants: {
       variant: {
