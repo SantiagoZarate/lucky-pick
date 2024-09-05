@@ -14,6 +14,7 @@ export function Header() {
           <nav className="flex gap-8">
             <Link to={'/create'}>create</Link>
             <Link to={'/'}>faq</Link>
+            <Link to={'/raffles'}>my raffles</Link>
           </nav>
         </section>
         <section>
