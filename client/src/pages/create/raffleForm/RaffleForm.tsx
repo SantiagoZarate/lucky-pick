@@ -11,6 +11,7 @@ import { RaffleLink } from '../RaffleLink';
 import { DetailsStep } from './DetailsStep';
 import { StepOne } from './StepOne';
 import { StepTwo } from './StepTwo';
+import { raffleAPI } from '@/api/raffle/raffleAPI';
 
 interface Props {
   step: number;
@@ -28,27 +29,34 @@ export function RaffleForm({ step, onIncreaseStep }: Props) {
   const handleSubmit = async (data: RaffleFormSchema) => {
     console.log(data);
     setIsLoading(true);
-    setTimeout(() => {
-      const cellsState = Array(data.amount_tickets)
-        .fill(1)
-        .map((_, index) => ({
-          id: index + 1,
-          available: true,
-          owner: '',
-        }));
+    raffleAPI
+      .create(data)
+      .then((response) => {
+        console.log(response);
+        setUrl('asdsadasd');
+      })
+      .finally(() => setIsLoading(false));
+    // setTimeout(() => {
+    //   const cellsState = Array(data.amount_tickets)
+    //     .fill(1)
+    //     .map((_, index) => ({
+    //       id: index + 1,
+    //       available: true,
+    //       owner: '',
+    //     }));
 
-      localStorage.setItem(
-        'lucky-pick-raffle',
-        JSON.stringify({
-          title: data.title,
-          prizes: data.prizes,
-          amount_tickets: data.amount_tickets,
-          tickets: cellsState,
-        })
-      );
-      setUrl('81wgd1s8dg');
-      setIsLoading(false);
-    }, 2000);
+    //   localStorage.setItem(
+    //     'lucky-pick-raffle',
+    //     JSON.stringify({
+    //       title: data.title,
+    //       prizes: data.prizes,
+    //       amount_tickets: data.amount_tickets,
+    //       tickets: cellsState,
+    //     })
+    //   );
+    //   setUrl('81wgd1s8dg');
+    //   setIsLoading(false);
+    // }, 2000);
 
     onIncreaseStep();
   };

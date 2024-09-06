@@ -19,7 +19,7 @@ export function StepTwo() {
     <>
       <FormField
         control={form.control}
-        name="amount_tickets"
+        name="tickets_amount"
         render={({ field }) => (
           <FormItem>
             <FormLabel className="flex items-center gap-2">

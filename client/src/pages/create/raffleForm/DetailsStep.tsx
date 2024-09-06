@@ -10,14 +10,14 @@ export function DetailsStep({ children }: PropsWithChildren) {
   const estimated = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-  }).format(getValues('price_per_ticket') * getValues('amount_tickets'));
+  }).format(getValues('price_per_ticket') * getValues('tickets_amount'));
 
   return (
     <section className="grid grid-cols-2 gap-2">
       <article className="flex flex-col gap-6 rounded-xl bg-secondary p-4">
         <Text variant={'subtitle'}>Your raffle:</Text>
         <ul className="grid w-full grid-cols-12">
-          {Array(Number(getValues('amount_tickets')))
+          {Array(Number(getValues('tickets_amount')))
             .fill(1)
             .map((_, index) => (
               <Cell key={index} number={index + 1} />
@@ -46,7 +46,7 @@ export function DetailsStep({ children }: PropsWithChildren) {
             <div className="flex rounded-lg bg-input p-2">
               <div className="flex-1">
                 <Text variant={'detail'}>Amount of tickets</Text>
-                <Text>{getValues('amount_tickets')}</Text>
+                <Text>{getValues('tickets_amount')}</Text>
               </div>
               <div className="flex-1">
                 <Text variant={'detail'}>Price per ticket</Text>

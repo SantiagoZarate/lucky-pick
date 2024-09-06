@@ -42,6 +42,8 @@ async function getOne(id: string) {
 }
 
 async function create(raffle: RaffleInsert) {
+  console.log(raffle);
+
   return await db.transaction(async (tx) => {
     const newRaffle = await tx
       .insert(raffleSchema)
@@ -54,7 +56,7 @@ async function create(raffle: RaffleInsert) {
     const raffleID = newRaffle[0].id;
 
     await tx.insert(ticketSchema).values(
-      Array(raffle.tickets_amount).map((_, index) => ({
+      [...Array(raffle.tickets_amount)].map((_, index) => ({
         raffle_id: raffleID,
         id: index + 1,
       }))

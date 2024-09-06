@@ -8,7 +8,7 @@ const app = express();
 setBaseMiddlewares(app);
 
 app.use("/health", healthcheck);
-app.use("/api/raffle", raffleRouter);
+app.use("/api/raffles", raffleRouter);
 
 export function start() {
   app.listen(envs.PORT, () => {

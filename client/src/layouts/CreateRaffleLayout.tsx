@@ -5,8 +5,6 @@ interface Props {
 }
 
 export function CreateRaffleLayout({ children }: Props) {
-  console.log(children);
-
   return (
     <section className="mx-auto flex max-w-desktop flex-col gap-8">
       <header>
