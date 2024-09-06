@@ -1,5 +1,9 @@
-import { raffleSchema } from "./raffleSchema";
+import { raffleSchema, raffleRelations } from "./raffleSchema";
+import { ticketRelations, ticketSchema } from "./ticketSchema";
 
 export default {
-  raffleSchmea: raffleSchema,
+  raffleSchema,
+  ticketSchema,
+  raffleRelations,
+  ticketRelations,
 };
