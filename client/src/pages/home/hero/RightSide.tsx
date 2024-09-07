@@ -7,6 +7,7 @@ import ConfettiExplosion from 'react-confetti-explosion';
 import { CellStatusInfo } from './CellStatusInfo';
 import { CellsGrid, type Cell as CellType } from './CellsGrid';
 import { NotificationsList } from './NotificationsList';
+import { MotionItem } from '@/components/ui/motion-item';
 
 export type Notification = {
   name: string;
@@ -16,7 +17,7 @@ export type Notification = {
 
 export function RightSide() {
   const [cells, setCells] = useState<CellType[]>(
-    getRandomCellsStates(Math.floor(12 + Math.random() * 80))
+    getRandomCellsStates(Math.floor(12 + Math.random() * 30))
   );
   const [notifications, setNotifications] =
     useState<Notification[]>(NOTIFICATIONS);
@@ -58,13 +59,14 @@ export function RightSide() {
     <article className="flex flex-1 flex-col gap-4">
       <CellsGrid>
         {cells.map(({ id, state }) => (
-          <Cell
-            className="cursor-pointer transition-all active:scale-75"
-            onClick={() => toggleCellState(id)}
-            variant={state}
-            key={id}
-            number={id}
-          />
+          <MotionItem key={id}>
+            <Cell
+              className="cursor-pointer transition-all active:scale-75"
+              onClick={() => toggleCellState(id)}
+              variant={state}
+              number={id}
+            />
+          </MotionItem>
         ))}
       </CellsGrid>
       <footer className="relative flex items-start justify-between">
