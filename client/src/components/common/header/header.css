@@ -1,0 +1,12 @@
+.header {
+  backdrop-filter: blur(0px);
+  animation: BlurBackground normal;
+  animation-timeline: scroll();
+  animation-range: 10px;
+}
+
+@keyframes BlurBackground {
+  to {
+    backdrop-filter: blur(10px);
+  }
+}

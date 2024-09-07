@@ -1,9 +1,10 @@
 import { Text } from '@/components/ui';
 import { Link } from 'react-router-dom';
+import './header.css';
 
 export function Header() {
   return (
-    <header className="fixed top-0 z-50 w-full">
+    <header className="header fixed top-0 z-50 w-full">
       <div className="mx-auto flex h-16 max-w-desktop items-center justify-between">
         <section className="flex items-center gap-16">
           <Link to={'/'}>
