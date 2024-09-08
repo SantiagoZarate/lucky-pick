@@ -1,14 +1,12 @@
 import express from "express";
 import { envs } from "../config/envs";
 import { setBaseMiddlewares } from "../middlewares/setBaseMiddlewares";
-import { raffleRouter } from "../router/raffle.router";
-import { healthcheck } from "./healtcheck";
+import { routes } from "../router";
 
 const app = express();
 setBaseMiddlewares(app);
 
-app.use("/health", healthcheck);
-app.use("/api/raffles", raffleRouter);
+app.use("/", routes);
 
 export function start() {
   app.listen(envs.PORT, () => {

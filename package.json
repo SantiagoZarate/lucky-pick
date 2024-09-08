@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint:staged": "pnpm --filter client lint:staged",
+    "start": "pnpm stop && docker compose up -d",
+    "stop": "docker compose stop",
     "dev": "pnpm --filter client dev"
   },
   "devDependencies": {

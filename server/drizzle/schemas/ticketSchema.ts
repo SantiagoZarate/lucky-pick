@@ -5,7 +5,7 @@ import { relations } from "drizzle-orm";
 export const ticketSchema = sqliteTable("ticket", {
   id: integer("id").primaryKey(),
   purchased_by: text("purchased_by"),
-  available: integer("available", { mode: "boolean" }).default(false),
+  available: integer("available", { mode: "boolean" }).default(true),
   raffle_id: text("raffle_id")
     .notNull()
     .references(() => raffleSchema.id),

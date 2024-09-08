@@ -1,0 +1,97 @@
+openapi: 3.0.0
+info:
+  version: "v1.0.0"
+  title: Swagger Demo Project
+  description: Implementation of Swagger with TypeScript
+servers:
+  - url: http://localhost:7000
+    description: ""
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Raffle:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "91ash81q798s1gs"
+        title:
+          type: string
+          example: "My first raffle"
+        price_per_ticket:
+          type: integer
+          example: 250
+    RaffleWithTickets:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "91ash81q798s1gs"
+        title:
+          type: string
+          example: "My first raffle"
+        price_per_ticket:
+          type: integer
+          example: 250
+        tickets:
+          type: array
+          items:
+            $ref: "#/components/schemas/Ticket"
+    Ticket:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        purchased_by:
+          type: string
+          example: "Paul Logan"
+        available:
+          type: boolean
+          example: true
+paths:
+  /api/raffles:
+    get:
+      summary: Get all raffles
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response with a list of raffles (without tickets)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Raffle"
+  /api/raffles/{id}:
+    get:
+      summary: Get raffle by ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successful response with raffle data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RaffleWithTickets"
+        "404":
+          description: Raffle not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Raffle not found"
