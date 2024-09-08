@@ -1,0 +1,37 @@
+version: "3"
+services:
+  lucky-pick-be:
+    container_name: lucky-pick-be
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    env_file:
+      - path: ./server/.env
+        required: true
+    # environment:
+    #   DATABASE_URL: "host=go_db user=root password=rootpass dbname=root sslmode=disable"
+    ports:
+      - "7000:7000"
+    networks:
+      - frontend
+      - backend
+  lucky-pick-fe:
+    container_name: lucky-pick-fe
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - /app/web/node_modules
+    networks:
+      - frontend
+    env_file:
+      - path: ./client/.env
+        required: true
+
+volumes:
+  pgdata: {}
+networks:
+  frontend:
+  backend:

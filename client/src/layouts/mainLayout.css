@@ -1,11 +1,11 @@
-@property --background {
+@property --layout-bg {
   syntax: '<color>';
   inherits: false;
   initial-value: hsl(0deg, 0%, 100%);
 }
 
 .main-layout {
-  background-color: var(--background);
+  background-color: var(--layout-bg);
   animation: changeBackgroundColor normal;
   animation-timeline: scroll();
   animation-range: 200px;
@@ -13,6 +13,6 @@
 
 @keyframes changeBackgroundColor {
   to {
-    --background: hsl(120deg, 50%, 80%);
+    --layout-bg: hsl(120deg, 50%, 80%);
   }
 }
