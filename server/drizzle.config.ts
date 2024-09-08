@@ -1,9 +1,9 @@
-import { defineConfig } from "drizzle-kit";
 import { config } from "dotenv";
+import { defineConfig } from "drizzle-kit";
 config();
 
 export default defineConfig({
-  out: "./drizzle/",
+  out: "./drizzle/migrations",
   dialect: "sqlite",
   driver: "turso",
   schema: "./drizzle/schemas",

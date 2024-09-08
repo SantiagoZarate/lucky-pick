@@ -7,6 +7,7 @@ const envsSchema = z.object({
   MODE: z.enum(["prod", "dev"]),
   TURSO_URL: z.string().url(),
   TURSO_TOKEN: z.string(),
+  MIGRATE: z.coerce.boolean().default(false),
 });
 
 export const envs = envsSchema.parse({
@@ -14,4 +15,5 @@ export const envs = envsSchema.parse({
   MODE: process.env.MODE ?? "dev",
   TURSO_TOKEN: process.env.TURSO_TOKEN,
   TURSO_URL: process.env.TURSO_URL,
+  MIGRATE: process.env.MIGRATE,
 });
