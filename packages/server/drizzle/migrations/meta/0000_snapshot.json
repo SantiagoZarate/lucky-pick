@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "a8f5e8bb-d557-426a-9b05-7a48f6e26a1f",
+  "id": "6c5b4554-7a00-45af-9a5d-d3bc4d7516ba",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "raffle": {
@@ -34,12 +34,21 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "prizes": {
+          "name": "prizes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
         }
       },
       "indexes": {
         "raffle_public_url_unique": {
           "name": "raffle_public_url_unique",
-          "columns": ["public_url"],
+          "columns": [
+            "public_url"
+          ],
           "isUnique": true
         }
       },
@@ -70,7 +79,7 @@
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false,
-          "default": false
+          "default": true
         },
         "raffle_id": {
           "name": "raffle_id",
@@ -86,8 +95,12 @@
           "name": "ticket_raffle_id_raffle_id_fk",
           "tableFrom": "ticket",
           "tableTo": "raffle",
-          "columnsFrom": ["raffle_id"],
-          "columnsTo": ["id"],
+          "columnsFrom": [
+            "raffle_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "no action",
           "onUpdate": "no action"
         }

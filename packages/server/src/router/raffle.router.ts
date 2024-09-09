@@ -10,7 +10,7 @@ export const raffleRouter = router({
   getRaffles: publicProcedure
     .meta(getAll)
     .input(z.void())
-    .output(z.array(raffleSchemaDTO))
+    .output(z.array(raffleTicketsSchemaDTO))
     .query(async () => {
       return await raffleRepository.getAll();
     }),

@@ -1,16 +1,12 @@
-import { RouterInputs, RouterOutputs, trpc } from '@/lib/trpc';
+import { RouterOutputs, trpc } from '@/lib/trpc';
 import { UseTRPCQueryResult } from '@trpc/react-query/shared';
 
-type RaffleOutput = RouterOutputs['raffle']['getRaffles'];
-type RaffleInput = RouterInputs['raffle']['createRaffle'];
+type RaffleOutput = RouterOutputs['raffle'];
 
 export default {
-  getAll: (): UseTRPCQueryResult<RaffleOutput, { message: string }> =>
+  getAll: (): UseTRPCQueryResult<
+    RaffleOutput['getRaffles'],
+    { message: string }
+  > =>
     trpc.raffle.getRaffles.useQuery(undefined, { refetchOnWindowFocus: false }),
-  create: (data: RaffleInput) => {
-    console.log('CREANDO RAFFLE');
-    console.log({ data });
-
-    trpc.raffle.createRaffle.useMutation();
-  },
 };

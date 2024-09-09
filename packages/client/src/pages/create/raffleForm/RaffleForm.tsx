@@ -1,4 +1,6 @@
 import { Loader } from '@/components/ui';
+import { toast } from '@/hooks/use-toast';
+import { trpc } from '@/lib/trpc';
 import {
   RaffleFormSchema,
   defaultValues,
@@ -11,7 +13,6 @@ import { RaffleLink } from '../RaffleLink';
 import { DetailsStep } from './DetailsStep';
 import { StepOne } from './StepOne';
 import { StepTwo } from './StepTwo';
-import { raffleAPI } from '@/api/raffle';
 
 interface Props {
   step: number;
@@ -20,24 +21,33 @@ interface Props {
 
 export function RaffleForm({ step, onIncreaseStep }: Props) {
   const [url, setUrl] = useState<string>('');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const form = useForm<RaffleFormSchema>({
     resolver: zodResolver(raffleFormSchema),
     defaultValues,
   });
+  const { mutate, isLoading } = trpc.raffle.createRaffle.useMutation();
 
   const handleSubmit = async (data: RaffleFormSchema) => {
     console.log(data);
-    setIsLoading(true);
-    raffleAPI
-      .create(data)
-      .then((response) => {
-        console.log(response);
-        // setUrl(response.public_url);
-        setUrl('response.public_url');
-      })
-      .finally(() => setIsLoading(false));
-
+    mutate(
+      {
+        price_per_ticket: data.price_per_ticket,
+        tickets_amount: data.tickets_amount,
+        title: data.title,
+        prizes: data.prizes,
+      },
+      {
+        onError: () => {
+          toast({
+            title: 'Ooops...',
+            description: 'There was an error creating the raffle',
+          });
+        },
+        onSuccess: ({ id }) => {
+          setUrl(id);
+        },
+      }
+    );
     onIncreaseStep();
   };
 

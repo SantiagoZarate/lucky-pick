@@ -1,35 +1,49 @@
-import { Button, Text } from '@/components/ui';
-import { Raffle } from '@/types/raffle.type';
-import { Link } from 'react-router-dom';
+import raffleAPI from '@/api/raffle/raffleAPI';
+import { LocalRaffleSection, OnlineRaffleSection } from '@/components/raffle';
+import { Text } from '@/components/ui';
+import { RaffleDTO } from '@/types/raffle.type';
+import { RaffleList } from './RaffleList';
 
 export function RafflesPage() {
-  const raffle: Raffle = JSON.parse(localStorage.getItem('lucky-pick-raffle')!);
-
-  let availableTickets = 0;
-  raffle.tickets.forEach((t) => t.available && availableTickets++);
-
   return (
     <section className="mx-auto flex w-full max-w-desktop flex-col gap-8">
       <header>
         <Text variant={'title'}>raffles page</Text>
       </header>
-      <ul className="grid grid-cols-3">
-        <li className="">
-          <Link
-            to={'./local'}
-            className="flex items-center justify-between rounded-lg border border-border p-4 transition hover:-translate-y-1 hover:shadow-lg"
-          >
-            <Text>{raffle.title}</Text>
-            <Text>
-              {raffle.tickets.length - availableTickets} /{' '}
-              {raffle.tickets.length}
-            </Text>
-          </Link>
-        </li>
-      </ul>
-      <Button onClick={() => localStorage.removeItem('lucky-pick-raffle')}>
-        Delete raffle
-      </Button>
+      <OnlineRaffles />
+      <LocalRaffles />
     </section>
+  );
+}
+
+export function LocalRaffles() {
+  const raffles: RaffleDTO[] = JSON.parse(
+    localStorage.getItem('lucky-pick-raffle')!
+  );
+
+  return (
+    <LocalRaffleSection>
+      {raffles.length ? (
+        <RaffleList raffles={raffles} />
+      ) : (
+        <div>There are no raffles</div>
+      )}
+    </LocalRaffleSection>
+  );
+}
+
+export function OnlineRaffles() {
+  const { data, isError, isLoading } = raffleAPI.getAll();
+
+  return (
+    <OnlineRaffleSection>
+      {isError && <div>There was an error</div>}
+      {!isError && isLoading && <div>loading</div>}
+      {!isError && !isLoading && data.length ? (
+        <RaffleList raffles={data} />
+      ) : (
+        <div>There are no online raffles</div>
+      )}
+    </OnlineRaffleSection>
   );
 }

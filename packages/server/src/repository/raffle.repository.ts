@@ -38,7 +38,7 @@ async function getOne(id: string) {
     throw new Error('Raffle with id: ' + id + ' not found');
   }
 
-  return data;
+  return { ...data, prizes: data.prizes?.split(',') };
 }
 
 async function create(raffle: RaffleInsert) {
@@ -48,7 +48,7 @@ async function create(raffle: RaffleInsert) {
       .values({
         price_per_ticket: raffle.price_per_ticket,
         title: raffle.title,
-        prizes: raffle.prizes.toString(),
+        prizes: raffle.prizes.join(','),
       })
       .returning({ id: raffleSchema.id });
 
