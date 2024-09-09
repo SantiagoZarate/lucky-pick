@@ -32,8 +32,7 @@ export function RaffleForm({ step, onIncreaseStep }: Props) {
     raffleAPI
       .create(data)
       .then((response) => {
-        console.log(response);
-        setUrl('asdsadasd');
+        setUrl(response.public_url);
       })
       .finally(() => setIsLoading(false));
 

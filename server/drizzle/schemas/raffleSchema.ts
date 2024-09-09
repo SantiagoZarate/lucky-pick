@@ -14,6 +14,7 @@ export const raffleSchema = sqliteTable("raffle", {
     .$default(() => nanoid()),
   title: text("title").notNull(),
   price_per_ticket: integer("price_per_ticket").notNull(),
+  prizes: text("prizes"),
 });
 
 export const raffleRelations = relations(raffleSchema, ({ many }) => ({

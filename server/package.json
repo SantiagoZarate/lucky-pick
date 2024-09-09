@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
     "build": "tsc",
-    "start": "node dist/src/index.js",
-    "swagger": "ts-node-dev swagger.ts"
+    "start": "node dist/src/index.js"
   },
   "keywords": [],
   "author": "",

@@ -42,14 +42,13 @@ async function getOne(id: string) {
 }
 
 async function create(raffle: RaffleInsert) {
-  console.log(raffle);
-
   return await db.transaction(async (tx) => {
     const newRaffle = await tx
       .insert(raffleSchema)
       .values({
         price_per_ticket: raffle.price_per_ticket,
         title: raffle.title,
+        prizes: raffle.prizes.toString(),
       })
       .returning({ id: raffleSchema.id });
 
@@ -62,7 +61,7 @@ async function create(raffle: RaffleInsert) {
       }))
     );
 
-    return raffleID;
+    return newRaffle[0];
   });
 }
 

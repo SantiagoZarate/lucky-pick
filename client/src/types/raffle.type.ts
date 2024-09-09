@@ -1,9 +1,21 @@
-import { RaffleFormSchema } from '@/lib/zod-validation/raffleSchema';
+import { Ticket } from './ticket.type';
 
-export type Raffle = Omit<RaffleFormSchema, 'amount_tickets'> & {
-  tickets: {
-    id: number;
-    available: boolean;
-    owner: string | undefined;
-  }[];
+export interface Raffle {
+  id: string;
+  title: string;
+  price_per_ticket: number;
+  public_url: string;
+}
+
+export type RaffleSelect = Raffle['id'];
+export type RaffleDelete = Raffle['id'];
+export type RaffleInsert = Pick<Raffle, 'price_per_ticket' | 'title'> & {
+  tickets_amount: number;
+  prizes?: string[] | undefined;
+};
+
+export type RaffleDTO = Raffle;
+
+export type RaffleTicketsDTO = RaffleDTO & {
+  tickets: Ticket[];
 };

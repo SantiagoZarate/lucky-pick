@@ -24,6 +24,9 @@ components:
         price_per_ticket:
           type: integer
           example: 250
+        public_url:
+          type: string
+          example: "9283g183g12873t"
     RaffleWithTickets:
       type: object
       properties:
@@ -36,6 +39,9 @@ components:
         price_per_ticket:
           type: integer
           example: 250
+        public_url:
+          type: string
+          example: "9283g183g12873t"
         tickets:
           type: array
           items:

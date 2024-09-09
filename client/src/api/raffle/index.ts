@@ -1,7 +1,12 @@
-import { RaffleFormSchema } from '@/lib/zod-validation/raffleSchema';
+import {
+  RaffleDTO,
+  RaffleInsert,
+  RaffleSelect,
+  RaffleTicketsDTO,
+} from '@/types/raffle.type';
 
 export interface RaffleAPI {
-  getAll: () => Promise<unknown>;
-  getOne: (id: string) => Promise<unknown>;
-  create: (data: RaffleFormSchema) => Promise<unknown>;
+  getAll: () => Promise<RaffleDTO[]>;
+  getOne: (id: RaffleSelect) => Promise<RaffleTicketsDTO>;
+  create: (data: RaffleInsert) => Promise<RaffleDTO>;
 }
