@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
+    "target": "ES2017",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
     "baseUrl": "src",
+    "allowJs": true,
     "paths": {
       "@/*": ["*"],
       "@router": ["router/index.ts"],
@@ -12,12 +15,12 @@
       "@middlewares/*": ["middlewares/*"],
       "@dtos": ["dtos/index.ts"]
     },
+    "types": ["node", "express"],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "outDir": "dist",
-    "resolveJsonModule": true
+    "outDir": "dist"
   },
   "exclude": ["node_modules/", "dist"],
   "include": ["src/**/*"]

@@ -7,6 +7,7 @@ import { envs } from '@config/envs';
 import { openApiDocument } from '@lib/openapi';
 import { setBaseMiddlewares } from '@middlewares/setBaseMiddlewares';
 import { appRouter } from '@router';
+import { healthcheck } from './healtcheck';
 
 const app = express();
 setBaseMiddlewares(app);
@@ -28,6 +29,7 @@ app.use(
 // Serve Swagger UI with our OpenAPI schema
 app.use('/', swaggerUi.serve);
 app.get('/', swaggerUi.setup(openApiDocument));
+app.get('/health', healthcheck);
 
 export function start() {
   app.listen(envs.PORT, () => {
