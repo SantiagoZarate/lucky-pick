@@ -3,7 +3,7 @@ services:
   lucky-pick-be:
     container_name: lucky-pick-be
     build:
-      context: ./server
+      context: ./packages/server
       dockerfile: Dockerfile
     env_file:
       - path: ./server/.env
@@ -15,7 +15,7 @@ services:
   lucky-pick-fe:
     container_name: lucky-pick-fe
     build:
-      context: ./client
+      context: ./packages/client
       dockerfile: Dockerfile
     ports:
       - "8000:8000"

@@ -4,15 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint:staged": "pnpm --filter client lint:staged",
+    "lint:staged": "pnpm --filter client lint:staged && pnpm --filter server lint:staged",
     "start": "pnpm stop && docker compose up -d",
     "stop": "docker compose stop",
-    "dev": "pnpm --filter client dev"
+    "dev": "lerna run dev"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@commitlint/cli": "19.4.1",
     "@commitlint/config-conventional": "19.4.1",
-    "husky": "9.1.5"
+    "husky": "9.1.5",
+    "lerna": "8.1.8"
   },
   "lint-staged": {
     "**/*.{tsx,ts}": [

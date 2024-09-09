@@ -2,5 +2,7 @@ import { router } from '@lib/trpc';
 import { raffleRouter } from './raffle.router';
 
 export const appRouter = router({
-  user: raffleRouter,
+  raffle: raffleRouter,
 });
+
+export type AppRouter = typeof appRouter;
