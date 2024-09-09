@@ -1,9 +1,9 @@
-import cors from "cors";
-import { Application, json, urlencoded } from "express";
-import morgan from "morgan";
+import cors from 'cors';
+import { Application, json, urlencoded } from 'express';
+import morgan from 'morgan';
 
-import { corsOptions } from "@config/cors";
-import { envs } from "@config/envs";
+import { corsOptions } from '@config/cors';
+import { envs } from '@config/envs';
 
 export function setBaseMiddlewares(app: Application) {
   // Allow posts requests
@@ -13,5 +13,5 @@ export function setBaseMiddlewares(app: Application) {
   // Allow CORS
   app.use(cors(corsOptions));
 
-  envs.MODE === "dev" && app.use(morgan("dev"));
+  envs.MODE === 'dev' && app.use(morgan('dev'));
 }

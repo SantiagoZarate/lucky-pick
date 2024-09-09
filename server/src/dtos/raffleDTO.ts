@@ -1,6 +1,6 @@
-import { z } from "zod";
-import { Raffle } from "../types/raffle.type";
-import { ticketSchemaDTO } from "./ticketDTO";
+import { z } from 'zod';
+import { Raffle } from '../types/raffle.type';
+import { ticketSchemaDTO } from './ticketDTO';
 
 export const raffleSchemaDTO = z.object({
   title: z.string(),

@@ -1,11 +1,11 @@
 openapi: 3.0.0
 info:
-  version: "v1.0.0"
+  version: 'v1.0.0'
   title: Swagger Demo Project
   description: Implementation of Swagger with TypeScript
 servers:
   - url: http://localhost:7000
-    description: ""
+    description: ''
 components:
   securitySchemes:
     bearerAuth:
@@ -17,35 +17,35 @@ components:
       properties:
         id:
           type: string
-          example: "91ash81q798s1gs"
+          example: '91ash81q798s1gs'
         title:
           type: string
-          example: "My first raffle"
+          example: 'My first raffle'
         price_per_ticket:
           type: integer
           example: 250
         public_url:
           type: string
-          example: "9283g183g12873t"
+          example: '9283g183g12873t'
     RaffleWithTickets:
       type: object
       properties:
         id:
           type: string
-          example: "91ash81q798s1gs"
+          example: '91ash81q798s1gs'
         title:
           type: string
-          example: "My first raffle"
+          example: 'My first raffle'
         price_per_ticket:
           type: integer
           example: 250
         public_url:
           type: string
-          example: "9283g183g12873t"
+          example: '9283g183g12873t'
         tickets:
           type: array
           items:
-            $ref: "#/components/schemas/Ticket"
+            $ref: '#/components/schemas/Ticket'
     Ticket:
       type: object
       properties:
@@ -54,7 +54,7 @@ components:
           example: 1
         purchased_by:
           type: string
-          example: "Paul Logan"
+          example: 'Paul Logan'
         available:
           type: boolean
           example: true
@@ -65,14 +65,14 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response with a list of raffles (without tickets)
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Raffle"
+                  $ref: '#/components/schemas/Raffle'
   /api/raffles/{id}:
     get:
       summary: Get raffle by ID
@@ -85,13 +85,13 @@ paths:
           schema:
             type: integer
       responses:
-        "200":
+        '200':
           description: Successful response with raffle data
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/RaffleWithTickets"
-        "404":
+                $ref: '#/components/schemas/RaffleWithTickets'
+        '404':
           description: Raffle not found
           content:
             application/json:
@@ -100,4 +100,4 @@ paths:
                 properties:
                   message:
                     type: string
-                    example: "Raffle not found"
+                    example: 'Raffle not found'

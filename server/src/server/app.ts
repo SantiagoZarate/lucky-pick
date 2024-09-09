@@ -1,33 +1,33 @@
-import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import express from "express";
-import swaggerUi from "swagger-ui-express";
-import { createOpenApiHttpHandler } from "trpc-openapi";
+import { createExpressMiddleware } from '@trpc/server/adapters/express';
+import express from 'express';
+import swaggerUi from 'swagger-ui-express';
+import { createOpenApiHttpHandler } from 'trpc-openapi';
 
-import { envs } from "@config/envs";
-import { openApiDocument } from "@lib/openapi";
-import { setBaseMiddlewares } from "@middlewares/setBaseMiddlewares";
-import { appRouter } from "@router";
+import { envs } from '@config/envs';
+import { openApiDocument } from '@lib/openapi';
+import { setBaseMiddlewares } from '@middlewares/setBaseMiddlewares';
+import { appRouter } from '@router';
 
 const app = express();
 setBaseMiddlewares(app);
 
 app.use(
-  "/api/trpc",
+  '/api/trpc',
   createExpressMiddleware({
     router: appRouter,
   })
 );
 
 app.use(
-  "/api",
+  '/api',
   createOpenApiHttpHandler({
     router: appRouter,
   })
 );
 
 // Serve Swagger UI with our OpenAPI schema
-app.use("/", swaggerUi.serve);
-app.get("/", swaggerUi.setup(openApiDocument));
+app.use('/', swaggerUi.serve);
+app.get('/', swaggerUi.setup(openApiDocument));
 
 export function start() {
   app.listen(envs.PORT, () => {

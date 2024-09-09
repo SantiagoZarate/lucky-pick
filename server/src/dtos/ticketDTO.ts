@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { Ticket } from "../types/ticket.type";
+import { z } from 'zod';
+import { Ticket } from '../types/ticket.type';
 
 export const ticketSchemaDTO = z.object({
   raffle_id: z.coerce.string(),

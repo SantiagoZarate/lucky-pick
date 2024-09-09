@@ -1,8 +1,8 @@
-import { eq } from "drizzle-orm";
-import { db } from "../../drizzle";
-import { raffleSchema } from "../../drizzle/schemas/raffleSchema";
-import { ticketSchema } from "../../drizzle/schemas/ticketSchema";
-import { RaffleInsert } from "../types/raffle.type";
+import { eq } from 'drizzle-orm';
+import { db } from '../../drizzle';
+import { raffleSchema } from '../../drizzle/schemas/raffleSchema';
+import { ticketSchema } from '../../drizzle/schemas/ticketSchema';
+import { RaffleInsert } from '../types/raffle.type';
 
 async function getAll() {
   const data = await db.query.raffleSchema.findMany({
@@ -16,7 +16,7 @@ async function getAll() {
   });
 
   if (!data.length) {
-    throw new Error("No raffles found");
+    throw new Error('No raffles found');
   }
 
   return data;
@@ -35,7 +35,7 @@ async function getOne(id: string) {
   });
 
   if (!data) {
-    throw new Error("Raffle with id: " + id + " not found");
+    throw new Error('Raffle with id: ' + id + ' not found');
   }
 
   return data;

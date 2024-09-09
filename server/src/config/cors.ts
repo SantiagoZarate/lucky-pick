@@ -1,6 +1,6 @@
-import { CorsOptions } from "cors";
+import { CorsOptions } from 'cors';
 
 export const corsOptions: CorsOptions = {
-  methods: ["GET", "POST", "DELETE", "PUT"],
-  origin: "http://localhost:5173",
+  methods: ['GET', 'POST', 'DELETE', 'PUT'],
+  origin: 'http://localhost:5173',
 };
