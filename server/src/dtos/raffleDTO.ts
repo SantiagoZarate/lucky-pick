@@ -10,6 +10,8 @@ export const raffleSchemaDTO = z.object({
   prizes: z.string().nullable(),
 }) satisfies z.ZodType<Raffle>;
 
+export type RaffleDTO = z.infer<typeof raffleSchemaDTO>;
+
 export const raffleTicketsSchemaDTO = raffleSchemaDTO.extend({
   tickets: z.array(
     ticketSchemaDTO.omit({

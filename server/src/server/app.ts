@@ -1,12 +1,12 @@
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import express from "express";
-import { envs } from "../config/envs";
-import { setBaseMiddlewares } from "../middlewares/setBaseMiddlewares";
-
 import swaggerUi from "swagger-ui-express";
 import { createOpenApiHttpHandler } from "trpc-openapi";
-import { openApiDocument } from "../lib/openapi";
-import { appRouter } from "../router";
+
+import { envs } from "@config/envs";
+import { openApiDocument } from "@lib/openapi";
+import { setBaseMiddlewares } from "@middlewares/setBaseMiddlewares";
+import { appRouter } from "@router";
 
 const app = express();
 setBaseMiddlewares(app);

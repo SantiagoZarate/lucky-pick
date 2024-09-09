@@ -1,5 +1,5 @@
 import { generateOpenApiDocument } from "trpc-openapi";
-import { appRouter } from "../../router";
+import { appRouter } from "@router";
 
 export const openApiDocument = generateOpenApiDocument(appRouter, {
   title: "Lucky Pick API",
