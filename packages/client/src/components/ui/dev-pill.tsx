@@ -9,7 +9,9 @@ export function DevPill() {
       <Text>Dev Mode</Text>
       <footer className="flex gap-1">
         <div className="size-4 rounded-full border border-dashed border-black/40 p-1">
-          <div className="h-full w-full rounded-[inherit] bg-red-400"></div>
+          <div
+            className={`h-full w-full rounded-[inherit] ${envs.BACKEND ? 'bg-green-500' : 'bg-red-400'}`}
+          ></div>
         </div>
         <Text variant={'detail'}>Connected to backend</Text>
       </footer>

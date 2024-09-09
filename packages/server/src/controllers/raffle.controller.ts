@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import raffleRepository from '../repository/raffle.repository';
 
-async function getAll(req: Request, res: Response) {
+async function getAll(_: Request, res: Response) {
   const results = await raffleRepository.getAll();
   res.json({
     ok: true,

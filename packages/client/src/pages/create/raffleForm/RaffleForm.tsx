@@ -11,7 +11,7 @@ import { RaffleLink } from '../RaffleLink';
 import { DetailsStep } from './DetailsStep';
 import { StepOne } from './StepOne';
 import { StepTwo } from './StepTwo';
-import { raffleAPI } from '@/api/raffle/raffleAPI';
+import { raffleAPI } from '@/api/raffle';
 
 interface Props {
   step: number;
@@ -32,7 +32,9 @@ export function RaffleForm({ step, onIncreaseStep }: Props) {
     raffleAPI
       .create(data)
       .then((response) => {
-        setUrl(response.public_url);
+        console.log(response);
+        // setUrl(response.public_url);
+        setUrl('response.public_url');
       })
       .finally(() => setIsLoading(false));
 

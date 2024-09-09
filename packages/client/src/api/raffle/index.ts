@@ -1,12 +1,5 @@
-import {
-  RaffleDTO,
-  RaffleInsert,
-  RaffleSelect,
-  RaffleTicketsDTO,
-} from '@/types/raffle.type';
+import envs from '@/config/envs';
+import prod from './raffleAPI';
+import dev from './raffleAPi.dev';
 
-export interface RaffleAPI {
-  getAll: () => Promise<RaffleDTO[]>;
-  getOne: (id: RaffleSelect) => Promise<RaffleTicketsDTO>;
-  create: (data: RaffleInsert) => Promise<RaffleDTO>;
-}
+export const raffleAPI = envs.BACKEND ? prod : dev;

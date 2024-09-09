@@ -1,28 +1,16 @@
-// import envs from '@/config/envs';
-// import { RaffleAPI } from '.';
+import { RouterInputs, RouterOutputs, trpc } from '@/lib/trpc';
+import { UseTRPCQueryResult } from '@trpc/react-query/shared';
 
-// const ENDPOINT = envs.RAFFLE_API_URL + '/api/raffles';
+type RaffleOutput = RouterOutputs['raffle']['getRaffles'];
+type RaffleInput = RouterInputs['raffle']['createRaffle'];
 
-// export const raffleAPI: RaffleAPI = {
-//   async getAll() {
-//     return fetch(ENDPOINT).then((response) => response.json());
-//   },
-//   async create(data) {
-//     return fetch(ENDPOINT, {
-//       body: JSON.stringify(data),
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     }).then((response) => response.json());
-//   },
-//   async getOne(id) {
-//     return fetch(ENDPOINT + `/${id}`).then((response) => response.json());
-//   },
-// };
+export default {
+  getAll: (): UseTRPCQueryResult<RaffleOutput, { message: string }> =>
+    trpc.raffle.getRaffles.useQuery(undefined, { refetchOnWindowFocus: false }),
+  create: (data: RaffleInput) => {
+    console.log('CREANDO RAFFLE');
+    console.log({ data });
 
-import { trpc } from '';
-
-export const raffleAPI = {
-  getAll: async () => await trpc,
+    trpc.raffle.createRaffle.useMutation();
+  },
 };
