@@ -20,7 +20,8 @@ export const raffleRouter = router({
     .output(raffleTicketsSchemaDTO)
     .query(async (req) => {
       const { input } = req;
-      return await raffleRepository.getOne(input.id);
+      const raffle = await raffleRepository.getOne(input.id);
+      return raffleTicketsSchemaDTO.parse(raffle);
     }),
   createRaffle: publicProcedure
     .meta(create)

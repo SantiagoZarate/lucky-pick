@@ -7,8 +7,13 @@ export const raffleSchemaDTO = z.object({
   price_per_ticket: z.coerce.number(),
   id: z.string(),
   public_url: z.string(),
-  prizes: z.string().nullable(),
-}) satisfies z.ZodType<Raffle>;
+  prizes: z.preprocess((input) => {
+    if (typeof input === 'string') {
+      return input.split(',');
+    }
+    return [];
+  }, z.array(z.string())),
+}) satisfies z.ZodType<Omit<Raffle, 'prizes'>>;
 
 export type RaffleDTO = z.infer<typeof raffleSchemaDTO>;
 
@@ -19,3 +24,5 @@ export const raffleTicketsSchemaDTO = raffleSchemaDTO.extend({
     })
   ),
 });
+
+export type RaffleTicketsDTO = z.infer<typeof raffleTicketsSchemaDTO>;

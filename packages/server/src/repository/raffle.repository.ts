@@ -38,7 +38,7 @@ async function getOne(id: string) {
     throw new Error('Raffle with id: ' + id + ' not found');
   }
 
-  return { ...data, prizes: data.prizes?.split(',') };
+  return data;
 }
 
 async function create(raffle: RaffleInsert) {
