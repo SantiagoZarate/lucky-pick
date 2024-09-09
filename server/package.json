@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@libsql/client": "0.10.0",
+    "@trpc/server": "10.45.2",
     "cors": "2.8.5",
     "dotenv": "16.4.5",
     "drizzle-orm": "0.33.0",
@@ -21,6 +22,7 @@
     "nanoid": "3.3.4",
     "swagger-autogen": "2.23.7",
     "swagger-jsdoc": "^6.2.8",
+    "trpc-openapi": "1.2.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
