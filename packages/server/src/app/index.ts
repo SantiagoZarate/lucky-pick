@@ -36,3 +36,5 @@ export function start() {
     console.log(`🚀 Server running on http://localhost:${envs.PORT}`);
   });
 }
+
+export default app;

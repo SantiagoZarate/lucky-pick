@@ -52,7 +52,8 @@
     "tsc-alias": "1.8.10",
     "tsconfig-paths": "4.2.0",
     "typescript": "5.4.5",
-    "typescript-eslint": "^7.6.0"
+    "typescript-eslint": "^7.6.0",
+    "vercel": "37.4.0"
   },
   "lint-staged": {
     "**/*.ts": [
