@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    "packages/server/.vercel/**/*": true,
+    "packages/server/dist/**/*": true
+  }
+}
