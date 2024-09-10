@@ -31,10 +31,11 @@ app.use('/', swaggerUi.serve);
 app.get('/', swaggerUi.setup(openApiDocument));
 app.get('/health', healthcheck);
 
-export function start() {
-  app.listen(envs.PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${envs.PORT}`);
-  });
-}
+app.listen(envs.PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${envs.PORT}`);
+});
+
+// export function start() {
+// }
 
 export default app;
