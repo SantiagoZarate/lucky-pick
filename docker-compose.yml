@@ -6,7 +6,7 @@ services:
       context: ./packages/server
       dockerfile: Dockerfile
     env_file:
-      - path: ./server/.env
+      - path: ./packages/server/.env
         required: true
     ports:
       - "7000:7000"
@@ -24,7 +24,7 @@ services:
     networks:
       - frontend
     env_file:
-      - path: ./client/.env
+      - path: ./packages/client/.env
         required: true
 
 networks:

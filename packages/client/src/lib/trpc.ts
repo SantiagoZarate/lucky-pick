@@ -2,6 +2,7 @@ import { createTRPCReact, httpBatchLink } from '@trpc/react-query';
 import { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 
 import type { AppRouter } from '../../../server/src/router';
+import envs from '@/config/envs';
 
 export const trpc = createTRPCReact<AppRouter>();
 
@@ -11,7 +12,7 @@ export type RouterOutputs = inferRouterOutputs<AppRouter>;
 export const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
-      url: 'http://localhost:7000/api/trpc',
+      url: envs.RAFFLE_API_URL,
     }),
   ],
 });
