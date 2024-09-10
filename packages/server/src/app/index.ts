@@ -36,6 +36,9 @@ app.listen(envs.PORT, () => {
 });
 
 // export function start() {
+//   app.listen(envs.PORT, () => {
+//     console.log(`🚀 Server running on http://localhost:${envs.PORT}`);
+//   });
 // }
 
 export default app;

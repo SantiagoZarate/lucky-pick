@@ -16,7 +16,8 @@
     "@commitlint/cli": "19.4.1",
     "@commitlint/config-conventional": "19.4.1",
     "husky": "9.1.5",
-    "lerna": "8.1.8"
+    "lerna": "8.1.8",
+    "vercel": "37.4.0"
   },
   "lint-staged": {
     "**/*.{tsx,ts}": [

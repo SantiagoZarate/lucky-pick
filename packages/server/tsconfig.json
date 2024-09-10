@@ -21,10 +21,9 @@
     "strict": true,
     "skipLibCheck": true,
     "outDir": "./dist",
-
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
   "exclude": ["node_modules/", "dist"],
-  "include": ["src/**/*", "drizzle/**/*"]
+  "include": ["src/**/*", "drizzle/**/*", "api"]
 }
