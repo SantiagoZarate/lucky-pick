@@ -1,6 +1,9 @@
 {
-  "files.exclude": {
-    "packages/server/.vercel/**/*": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    ".vercel/**/*": true,
     "packages/server/dist/**/*": true
   }
 }
