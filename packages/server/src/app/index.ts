@@ -4,8 +4,8 @@ import swaggerUi from 'swagger-ui-express';
 import { createOpenApiHttpHandler } from 'trpc-openapi';
 
 import { envs } from '../config/envs';
-import { setBaseMiddlewares } from '../middlewares/setBaseMiddlewares';
 import { openApiDocument } from '../lib/openapi';
+import { setBaseMiddlewares } from '../middlewares/setBaseMiddlewares';
 import { appRouter } from '../router';
 import { healthcheck } from './healtcheck';
 
@@ -34,11 +34,5 @@ app.get('/health', healthcheck);
 app.listen(envs.PORT, () => {
   console.log(`🚀 Server running on http://localhost:${envs.PORT}`);
 });
-
-// export function start() {
-//   app.listen(envs.PORT, () => {
-//     console.log(`🚀 Server running on http://localhost:${envs.PORT}`);
-//   });
-// }
 
 export default app;

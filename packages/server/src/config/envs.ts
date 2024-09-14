@@ -8,12 +8,14 @@ const envsSchema = z.object({
   TURSO_URL: z.string().url(),
   TURSO_TOKEN: z.string(),
   MIGRATE: z.coerce.boolean().default(false),
+  JWT_SECRET: z.string(),
 });
 
 export const envs = envsSchema.parse({
-  PORT: process.env.PORT ?? '5000',
+  PORT: process.env.PORT ?? 5000,
   MODE: process.env.MODE ?? 'dev',
   TURSO_TOKEN: process.env.TURSO_TOKEN,
   TURSO_URL: process.env.TURSO_URL,
   MIGRATE: process.env.MIGRATE,
+  JWT_SECRET: process.env.SECRET,
 });
