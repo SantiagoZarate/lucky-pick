@@ -1,4 +1,5 @@
 import { eq } from 'drizzle-orm';
+import { NotFoundError } from '../shared/error';
 import { db } from '../../drizzle';
 import { raffleSchema } from '../../drizzle/schemas/raffleSchema.drizzle';
 import { ticketSchema } from '../../drizzle/schemas/ticketSchema.drizzle';
@@ -16,7 +17,7 @@ async function getAll() {
   });
 
   if (!data.length) {
-    throw new Error('No raffles found');
+    throw new NotFoundError('No raffles found');
   }
 
   return data;
@@ -35,7 +36,7 @@ async function getOne(id: string) {
   });
 
   if (!data) {
-    throw new Error('Raffle with id: ' + id + ' not found');
+    throw new NotFoundError('Raffle with id: ' + id + ' not found');
   }
 
   return data;

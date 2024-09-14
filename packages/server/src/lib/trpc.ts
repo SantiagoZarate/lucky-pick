@@ -5,7 +5,20 @@ import { createContext } from './context';
 
 export type Context = inferAsyncReturnType<typeof createContext>;
 
-const t = initTRPC.context<Context>().meta<TRPCPanelMeta>().create();
+const t = initTRPC
+  .context<Context>()
+  .meta<TRPCPanelMeta>()
+  .create({
+    errorFormatter({ shape, error }) {
+      return {
+        ...shape,
+        data: {
+          ...shape.data,
+          code: error.code,
+        },
+      };
+    },
+  });
 
 export const middleware = t.middleware;
 export const router = t.router;

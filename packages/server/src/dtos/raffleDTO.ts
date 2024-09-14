@@ -3,7 +3,7 @@ import { Raffle } from '../types/raffle.type';
 import { ticketSchemaDTO } from './ticketDTO';
 
 export const raffleSchemaDTO = z.object({
-  title: z.string(),
+  title: z.string().describe('Raffle title'),
   price_per_ticket: z.coerce.number(),
   id: z.string(),
   public_url: z.string(),

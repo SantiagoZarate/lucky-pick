@@ -1,8 +1,8 @@
-import { TRPCError } from '@trpc/server';
+import { TRPC_ERROR_CODE_KEY } from '@trpc/server/rpc';
 
 export class APIError extends Error {
-  readonly status: TRPCError['code'];
-  constructor(message: string, status: TRPCError['code'] = 'INTERNAL_SERVER_ERROR') {
+  readonly status: TRPC_ERROR_CODE_KEY;
+  constructor(message: string, status: TRPC_ERROR_CODE_KEY = 'INTERNAL_SERVER_ERROR') {
     super(message);
     this.status = status;
   }

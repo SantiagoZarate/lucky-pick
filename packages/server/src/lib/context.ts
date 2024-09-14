@@ -7,7 +7,7 @@ import { envs } from '../config/envs';
 
 export const createContext = ({ req, res }: trpcExpress.CreateExpressContextOptions) => {
   const verifyToken = () => {
-    const token = req.cookies.usertoken;
+    const token = req.cookies?.['usertoken'];
 
     if (!token) {
       return null;
@@ -32,6 +32,7 @@ export const createContext = ({ req, res }: trpcExpress.CreateExpressContextOpti
       httpOnly: true,
       expires: new Date(Date.now() + 900000000),
       sameSite: 'none',
+      secure: envs.MODE === 'prod',
     });
   };
 

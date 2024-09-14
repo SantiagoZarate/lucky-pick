@@ -2,7 +2,6 @@ import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import express, { Application } from 'express';
 import { renderTrpcPanel } from 'trpc-panel';
 
-// import { TRPCError } from '@trpc/server';
 import { envs } from '../config/envs';
 import { createContext } from '../lib/context';
 import { setBaseMiddlewares } from '../middlewares/setBaseMiddlewares';
@@ -18,12 +17,6 @@ app.use(
   createExpressMiddleware({
     router: appRouter,
     createContext,
-    // onError({ error }) {
-    //   throw new TRPCError({
-    //     code: error.code,
-    //     message: error.message,
-    //   });
-    // },
   })
 );
 
