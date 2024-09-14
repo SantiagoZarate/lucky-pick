@@ -1,7 +1,7 @@
 import { TRPCError } from '@trpc/server';
-import { publicProcedure } from '../lib/trpc';
+import { procedure } from '../lib/trpc';
 
-export const protectedProcedure = publicProcedure.use(async function isAuthed(opts) {
+export const protectedProcedure = procedure.use(async function isAuthed(opts) {
   const { ctx } = opts;
 
   if (!ctx.user) {

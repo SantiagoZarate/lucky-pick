@@ -18,10 +18,6 @@ async function getByUsername(username: UserSelect) {
     where: () => eq(userSchema.username, username),
   });
 
-  if (!data) {
-    throw new Error('There is no user with that username');
-  }
-
   return data;
 }
 

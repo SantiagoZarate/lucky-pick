@@ -1,16 +1,15 @@
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
-import express from 'express';
-import swaggerUi from 'swagger-ui-express';
-// import { createOpenApiHttpHandler } from 'trpc-openapi';
+import express, { Application } from 'express';
+import { renderTrpcPanel } from 'trpc-panel';
 
-import { createContext } from '../lib/context';
+// import { TRPCError } from '@trpc/server';
 import { envs } from '../config/envs';
-import { openApiDocument } from '../lib/openapi';
+import { createContext } from '../lib/context';
 import { setBaseMiddlewares } from '../middlewares/setBaseMiddlewares';
 import { appRouter } from '../router';
 import { healthcheck } from './healtcheck';
 
-const app = express();
+const app: Application = express();
 
 setBaseMiddlewares(app);
 
@@ -19,20 +18,19 @@ app.use(
   createExpressMiddleware({
     router: appRouter,
     createContext,
+    // onError({ error }) {
+    //   throw new TRPCError({
+    //     code: error.code,
+    //     message: error.message,
+    //   });
+    // },
   })
 );
 
-// app.use(
-//   '/api',
-//   createOpenApiHttpHandler({
-//     router: appRouter,
-//     createContext: () => {},
-//   })
-// );
+app.use('/', (_, res) => {
+  return res.send(renderTrpcPanel(appRouter, { url: 'http://localhost:7000/api/trpc' }));
+});
 
-// Serve Swagger UI with our OpenAPI schema
-app.use('/', swaggerUi.serve);
-app.get('/', swaggerUi.setup(openApiDocument));
 app.get('/health', healthcheck);
 
 app.listen(envs.PORT, () => {
