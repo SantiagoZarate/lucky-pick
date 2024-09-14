@@ -1,4 +1,4 @@
-import { appRouter } from '@router';
+import { appRouter } from '../../router';
 import { generateOpenApiDocument } from 'trpc-openapi';
 
 export const openApiDocument = generateOpenApiDocument(appRouter, {

@@ -1,10 +1,10 @@
 import { z } from 'zod';
 
-import { raffleSchemaDTO, raffleTicketsSchemaDTO } from '@dtos';
-import { create, getAll, getOne } from '@lib/openapi/raffle.openapi';
-import { publicProcedure, router } from '@lib/trpc';
-import { raffleFormSchema } from '@lib/zod-validations/raffle';
-import raffleRepository from '@repository/raffle.repository';
+import { raffleSchemaDTO, raffleTicketsSchemaDTO } from '../dtos';
+import raffleRepository from '../repository/raffle.repository';
+import { create, getAll, getOne } from '../lib/openapi/raffle.openapi';
+import { publicProcedure, router } from '../lib/trpc';
+import { raffleFormSchema } from '../lib/zod-validations/raffle';
 
 export const raffleRouter = router({
   getRaffles: publicProcedure

@@ -6,15 +6,6 @@
     "resolveJsonModule": true,
     "allowJs": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@router": ["src/router/index.ts"],
-      "@lib/*": ["src/lib/*"],
-      "@repository/*": ["src/repository/*"],
-      "@config/*": ["src/config/*"],
-      "@middlewares/*": ["src/middlewares/*"],
-      "@dtos": ["src/dtos/index.ts"]
-    },
     "types": ["node"],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
