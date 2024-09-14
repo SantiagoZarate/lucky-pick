@@ -13,6 +13,8 @@ export const raffleSchemaDTO = z.object({
     }
     return [];
   }, z.array(z.string())),
+  user_id: z.string(),
+  created_at: z.string().nullable(),
 }) satisfies z.ZodType<Omit<Raffle, 'prizes'>>;
 
 export type RaffleDTO = z.infer<typeof raffleSchemaDTO>;

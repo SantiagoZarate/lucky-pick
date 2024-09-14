@@ -16,6 +16,8 @@
   "dependencies": {
     "@libsql/client": "0.10.0",
     "@trpc/server": "10.45.2",
+    "@types/bcrypt": "5.0.2",
+    "bcrypt": "5.1.1",
     "cors": "2.8.5",
     "dotenv": "16.4.5",
     "drizzle-orm": "0.33.0",

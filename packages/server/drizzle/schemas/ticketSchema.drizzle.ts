@@ -1,5 +1,5 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
-import { raffleSchema } from './raffleSchema';
+import { raffleSchema } from './raffleSchema.drizzle';
 import { relations } from 'drizzle-orm';
 
 export const ticketSchema = sqliteTable('ticket', {

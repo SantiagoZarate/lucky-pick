@@ -9,6 +9,7 @@ const envsSchema = z.object({
   TURSO_TOKEN: z.string(),
   MIGRATE: z.coerce.boolean().default(false),
   JWT_SECRET: z.string(),
+  SALT_ROUNDS: z.coerce.number(),
 });
 
 export const envs = envsSchema.parse({
@@ -18,4 +19,5 @@ export const envs = envsSchema.parse({
   TURSO_URL: process.env.TURSO_URL,
   MIGRATE: process.env.MIGRATE,
   JWT_SECRET: process.env.SECRET,
+  SALT_ROUNDS: process.env.SALT_ROUNDS ?? 1,
 });

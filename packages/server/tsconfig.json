@@ -13,7 +13,8 @@
     "skipLibCheck": true,
     "outDir": "./dist",
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "composite": true
   },
   "exclude": ["node_modules/", "dist"],
   "include": ["src/**/*", "drizzle/**/*", "api"]

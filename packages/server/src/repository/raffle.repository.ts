@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm';
 import { db } from '../../drizzle';
-import { raffleSchema } from '../../drizzle/schemas/raffleSchema';
-import { ticketSchema } from '../../drizzle/schemas/ticketSchema';
+import { raffleSchema } from '../../drizzle/schemas/raffleSchema.drizzle';
+import { ticketSchema } from '../../drizzle/schemas/ticketSchema.drizzle';
 import { RaffleInsert } from '../types/raffle.type';
 
 async function getAll() {
@@ -48,6 +48,7 @@ async function create(raffle: RaffleInsert) {
       .values({
         price_per_ticket: raffle.price_per_ticket,
         title: raffle.title,
+        user_id: raffle.user_id,
         prizes: raffle.prizes.join(','),
       })
       .returning({ id: raffleSchema.id });
