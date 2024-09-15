@@ -13,6 +13,12 @@ export const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
       url: envs.RAFFLE_API_URL,
+      fetch(url, options) {
+        return fetch(url, {
+          ...options,
+          credentials: 'include',
+        });
+      },
     }),
   ],
 });

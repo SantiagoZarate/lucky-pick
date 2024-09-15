@@ -1,4 +1,4 @@
-import { Text } from '@/components/ui';
+import { Button, Text } from '@/components/ui';
 import { useAuth } from '@/hooks/useAuth';
 import { Link } from 'react-router-dom';
 import './header.css';
@@ -19,7 +19,7 @@ export function Header() {
             <Link to={'/raffles'}>my raffles</Link>
           </nav>
         </section>
-        <section>
+        <section className="flex items-center gap-2">
           <HeaderAccountSection />
         </section>
       </div>
@@ -28,7 +28,14 @@ export function Header() {
 }
 
 export function HeaderAccountSection() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
-  return user === null ? <Link to={'/login'}>login</Link> : <Text>{user.username}</Text>;
+  return user === null ? (
+    <Link to={'/login'}>login</Link>
+  ) : (
+    <>
+      <Text>{user.username}</Text>
+      <Button onClick={() => logout()}>logout</Button>
+    </>
+  );
 }

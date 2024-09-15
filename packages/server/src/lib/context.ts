@@ -31,5 +31,11 @@ export const createContext = ({ req, res }: trpcExpress.CreateExpressContextOpti
     res.cookie(name, value, cookieOptions);
   };
 
-  return { setCookies, user };
+  return {
+    setCookies,
+    user,
+    removeCookies(name: string) {
+      res.clearCookie(name);
+    },
+  };
 };

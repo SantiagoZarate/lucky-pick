@@ -10,6 +10,7 @@ const envsSchema = z.object({
   MIGRATE: z.coerce.boolean().default(false),
   JWT_SECRET: z.string(),
   SALT_ROUNDS: z.coerce.number(),
+  CORS_ORIGIN: z.string(),
 });
 
 export const envs = envsSchema.parse({
@@ -20,4 +21,5 @@ export const envs = envsSchema.parse({
   MIGRATE: process.env.MIGRATE,
   JWT_SECRET: process.env.SECRET,
   SALT_ROUNDS: process.env.SALT_ROUNDS ?? 1,
+  CORS_ORIGIN: process.env.CORS_ORIGIN,
 });

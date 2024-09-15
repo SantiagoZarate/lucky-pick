@@ -1,7 +1,6 @@
-import { z } from 'zod';
-
 import jwt from 'jsonwebtoken';
-import { envs } from '../config/envs';
+import { z } from 'zod';
+import { envs, JWT_TOKEN_KEY } from '../config';
 import { userSchemaDTOPublic } from '../dtos/userDTO';
 import { publicProcedure, router } from '../lib/trpc';
 import { loginSchema, registerSchema } from '../lib/zod-validations/auth';
@@ -20,11 +19,13 @@ export const authRouter = router({
     .mutation(async ({ input, ctx }) => {
       const user = await userService.login(input);
       const token = jwt.sign({ id: user.id }, envs.JWT_SECRET, { expiresIn: '1h' });
-      ctx.setCookies('lucky-pick-usertoken', token);
+      ctx.setCookies(JWT_TOKEN_KEY, token);
       return userSchemaDTOPublic.parse(user);
     }),
   logout: publicProcedure
     .input(z.void())
     .output(z.void())
-    .query(() => {}),
+    .mutation(async ({ ctx }) => {
+      ctx.removeCookies(JWT_TOKEN_KEY);
+    }),
 });
