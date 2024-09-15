@@ -2,6 +2,7 @@ import { createTRPCReact, httpBatchLink } from '@trpc/react-query';
 import { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 
 import type { AppRouter } from '../../../server/src/router';
+export * from '../../../server/src/lib/zod-validations';
 import envs from '@/config/envs';
 
 export const trpc = createTRPCReact<AppRouter>();

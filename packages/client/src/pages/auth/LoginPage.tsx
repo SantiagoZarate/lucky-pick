@@ -11,14 +11,7 @@ import {
 import { useAuth } from '@/hooks/useAuth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-
-const loginSchema = z.object({
-  username: z.string(),
-  password: z.string(),
-});
-
-export type LoginSchema = z.infer<typeof loginSchema>;
+import { loginSchema, type LoginSchema } from '@/lib/trpc';
 
 export function LoginPage() {
   const { loginAction } = useAuth();

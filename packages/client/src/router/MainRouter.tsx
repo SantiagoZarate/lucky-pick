@@ -1,7 +1,12 @@
 import { AuthProvider } from '@/context/authContext';
-import { MainLayout, AuthLayout } from '@/layouts';
-import { CreatePage, HomePage, RafflesPage } from '@/pages';
-import { LoginPage } from '@/pages/auth/LoginPage';
+import { AuthLayout, MainLayout } from '@/layouts';
+import {
+  CreatePage,
+  HomePage,
+  LoginPage,
+  RafflesPage,
+  SignupPage,
+} from '@/pages';
 import { ProtectedRoute } from '@/utils/ProtectedRoute';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -18,6 +23,7 @@ export function MainRouter() {
             </Route>
             <Route element={<AuthLayout />}>
               <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignupPage />} />
             </Route>
           </Route>
         </Routes>
