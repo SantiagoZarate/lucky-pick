@@ -17,10 +17,10 @@ export const authRouter = router({
   login: publicProcedure
     .input(loginSchema)
     .output(userSchemaDTOPublic)
-    .query(async ({ input, ctx }) => {
+    .mutation(async ({ input, ctx }) => {
       const user = await userService.login(input);
-      const token = jwt.sign({ id: user.id }, envs.JWT_SECRET);
-      ctx.setCookies('usertoken', token);
+      const token = jwt.sign({ id: user.id }, envs.JWT_SECRET, { expiresIn: '1h' });
+      ctx.setCookies('lucky-pick-usertoken', token);
       return userSchemaDTOPublic.parse(user);
     }),
   logout: publicProcedure

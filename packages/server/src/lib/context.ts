@@ -3,11 +3,11 @@
 import { TRPCError } from '@trpc/server';
 import * as trpcExpress from '@trpc/server/adapters/express';
 import jwt from 'jsonwebtoken';
-import { envs } from '../config/envs';
+import { cookieOptions, envs } from '../config';
 
 export const createContext = ({ req, res }: trpcExpress.CreateExpressContextOptions) => {
   const verifyToken = () => {
-    const token = req.cookies?.['usertoken'];
+    const token = req.cookies?.['lucky-pick-usertoken'];
 
     if (!token) {
       return null;
@@ -28,12 +28,7 @@ export const createContext = ({ req, res }: trpcExpress.CreateExpressContextOpti
   const user = verifyToken();
 
   const setCookies = (name: string, value: unknown) => {
-    res.cookie(name, value, {
-      httpOnly: true,
-      expires: new Date(Date.now() + 900000000),
-      sameSite: 'none',
-      secure: envs.MODE === 'prod',
-    });
+    res.cookie(name, value, cookieOptions);
   };
 
   return { setCookies, user };
