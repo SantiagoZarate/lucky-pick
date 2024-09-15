@@ -1,5 +1,5 @@
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
-import express, { Application } from 'express';
+import express, { Express } from 'express';
 import { renderTrpcPanel } from 'trpc-panel';
 
 import { envs } from '../config/envs';
@@ -8,7 +8,7 @@ import { setBaseMiddlewares } from '../middlewares/setBaseMiddlewares';
 import { appRouter } from '../router';
 import { healthcheck } from './healtcheck';
 
-const app: Application = express();
+const app: Express = express();
 
 setBaseMiddlewares(app);
 
