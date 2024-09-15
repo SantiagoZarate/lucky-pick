@@ -17,6 +17,9 @@ export const trpcClient = trpc.createClient({
         return fetch(url, {
           ...options,
           credentials: 'include',
+          headers: {
+            'Sponsored-By': 'Nike, Just Do It',
+          },
         });
       },
     }),

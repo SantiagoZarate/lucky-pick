@@ -32,7 +32,6 @@ export function LoginPage() {
   });
 
   const onSubmit = (data: LoginSchema) => {
-    console.log(data);
     form.reset();
     loginAction(data);
   };

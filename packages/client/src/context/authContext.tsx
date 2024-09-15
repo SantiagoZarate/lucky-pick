@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const redirect = useNavigate();
 
   const loginMutation = trpc.auth.login.useMutation({
-    onSuccess: (response) => {
+    onSuccess(response) {
       setUser(response);
       localStorage.setItem(LOCALSTORAGE_USER_KEY, JSON.stringify(response));
       redirect({ pathname: '/' });
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     <authContext.Provider
       value={{
         user,
-        loginAction: loginMutation.mutate,
+        loginAction: loginMutation.mutateAsync,
         logout: logoutMutation.mutate,
       }}
     >

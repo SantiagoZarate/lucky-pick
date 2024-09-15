@@ -2,6 +2,7 @@ import { Footer, Header } from '@/components/common';
 import { Outlet } from 'react-router-dom';
 import './mainLayout.css';
 import { DevPill } from '@/components/ui/dev-pill';
+import { Toaster } from '@/components/ui/toaster';
 
 export function MainLayout() {
   return (
@@ -11,6 +12,7 @@ export function MainLayout() {
         <Outlet />
         <Footer />
       </section>
+      <Toaster />
       <DevPill />
     </section>
   );
