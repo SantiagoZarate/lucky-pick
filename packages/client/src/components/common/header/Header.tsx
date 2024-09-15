@@ -1,10 +1,11 @@
 import { Text } from '@/components/ui';
+import { useAuth } from '@/hooks/useAuth';
 import { Link } from 'react-router-dom';
 import './header.css';
 
 export function Header() {
   return (
-    <header className="header fixed top-0 z-50 w-full">
+    <header className="header fixed top-0 z-50 w-full px-4">
       <div className="mx-auto flex h-16 max-w-desktop items-center justify-between">
         <section className="flex items-center gap-16">
           <Link to={'/'}>
@@ -19,9 +20,15 @@ export function Header() {
           </nav>
         </section>
         <section>
-          <Link to={'/'}>login</Link>
+          <HeaderAccountSection />
         </section>
       </div>
     </header>
   );
+}
+
+export function HeaderAccountSection() {
+  const { user } = useAuth();
+
+  return user === null ? <Link to={'/login'}>login</Link> : <Text>{user.username}</Text>;
 }
