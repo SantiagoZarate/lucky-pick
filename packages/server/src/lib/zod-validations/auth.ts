@@ -19,6 +19,7 @@ export type RegisterSchema = z.infer<typeof registerSchema>;
 
 export const loginSchema = baseRegisterSchema.omit({
   email: true,
+  confirmPassword: true,
 });
 
 export type LoginSchema = z.infer<typeof loginSchema>;

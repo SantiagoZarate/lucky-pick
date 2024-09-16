@@ -7,8 +7,8 @@ import {
   RafflesPage,
   SignupPage,
 } from '@/pages';
-import { ProtectedRoute } from '@/utils/ProtectedRoute';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ProtectedRoute } from './ProtectedRoute';
 
 export function MainRouter() {
   return (

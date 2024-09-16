@@ -9,9 +9,9 @@ export const raffleFormSchema = z.object({
 
 export type RaffleFormSchema = z.infer<typeof raffleFormSchema>;
 
-export const defaultValues: RaffleFormSchema = {
+export const defaultValues = {
   price_per_ticket: 0,
   prizes: [],
   tickets_amount: 0,
   title: '',
-};
+} satisfies RaffleFormSchema;
